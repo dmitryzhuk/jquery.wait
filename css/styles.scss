@@ -1,0 +1,35 @@
+
+/** Wait notification. For proper work the parent must be positioned or global */
+.wait {
+
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.8;
+  text-align: center;
+  background-color: #fcefa1;
+
+  .aligner { /* Nothing here */ }
+
+  .icon {
+    background: #fcefa1 url('../i/wait.gif') center center no-repeat;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+
+    &.error {
+      background-image: url('../i/error.png');
+    }
+  }
+
+  .message {
+    vertical-align: middle;
+    display: inline-block;
+    max-width: 75%;
+    text-align: left;
+  }
+} // wait

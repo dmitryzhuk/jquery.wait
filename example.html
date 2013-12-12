@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery.Wait Plugin Example</title>
+    <link href="css/styles.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div style="width:320px; margin: 0 auto; border: 1px solid #aaa">
+    <div>
+        <a id="successful" href="#">Successful async update</a>
+        <div style="height:200px; margin:10px; border: 1px solid #0f0"></div>
+    </div>
+    <div>
+        <a id="failed" href="#">Failed async update</a>
+        <div style="height:200px; margin:10px; border: 1px solid #f00"></div>
+    </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="js/jquery.wait.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#successful').on('click', function (e) {
+            var self = this;
+            $(self.nextElementSibling).wait({ 'action': 'show', 'message': 'Doing async operation' });
+            setTimeout(function () {
+                $(self.nextElementSibling).wait({ 'action': 'hide' }).text('Successfully updated');
+            }, 2000);
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
+        });
+        $('#failed').on('click', function (e) {
+            var self = this;
+            $(self.nextElementSibling).wait({ 'action': 'show', 'message': 'Doing async operation' });
+            setTimeout(function () {
+                $(self.nextElementSibling).wait({ 'action': 'error', 'message': 'Failed async operation' }).text('Failed to update');
+            }, 2000);
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
